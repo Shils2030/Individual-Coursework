@@ -1,0 +1,40 @@
+module task3_tb;
+
+//Write testbench here
+
+	localparam N = 16;
+	reg clk, reset_n;
+	wire [1:N] Q;
+
+	//Instantiate unit under test
+
+	task3 #(.N(N)) uut(
+		.clk(clk),
+		.reset_n(reset_n),
+		.R(R)
+	);
+
+	//Generating a clk signal
+	localparam T = 10;
+	always
+	begin
+		clk = 1'b0;
+		#(T / 2);
+		clk = 1'b1:
+		#(T / 2);
+	end
+
+	initial
+	begin
+	//Quick reset for 2ns
+		reset_n = 1'b0;
+		#2
+		reset_n = 1'b1;
+		
+		repeat(2) @(negedge clk);
+		wait ( R == 1);
+
+		#20 $stop;
+	end
+
+endmodule

@@ -15,14 +15,6 @@ A	B	C	Y
 
 module task1a(output logic [1:0] Y, input logic A, B, C);
 
-//Internal wires
-logic A;
-logic B;
-logic C;
-wire term0;
-wire term3;
-
-//Place and connect gates
 
 
 endmodule

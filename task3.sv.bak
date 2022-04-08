@@ -1,0 +1,33 @@
+// Task 3 - 2022
+module task3
+
+//Write solution here
+	#(parameter N = 16) (
+	input clk,
+	input reset_n,
+	output [1:N] R
+	);
+	
+	reg [1:N] R_reg, R_next;
+	wire taps;
+	
+	always @(posedge clk, negedge reset_n)
+	begin
+		if (~reset_n)
+			R_reg <= 'd1010110011100001; //LFSR should not start at 0 instead it starts at the number required
+		else
+			R_reg <= R_next;
+	end
+
+	//Next state logic
+	always @(taps, R_reg)
+		R_next = {taps, R_reg[1:N - 1]};
+
+	//Output logic
+	assign R = R_reg;
+	
+	//N = 16
+	assign taps = R_reg[16] ^ R_reg[16] ^ R_reg[13] ^ R_reg[4];
+		
+
+endmodule
