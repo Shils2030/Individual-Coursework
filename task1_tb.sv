@@ -13,10 +13,11 @@ task1b u2 (y_other, a, b, c);
 
 initial
 begin
-	//Write your testbench here
+
+//Write your testbench here
 
 {a, b, c} = 3'b000;
-#2 {a, b, c} = 3'b001;
+#2 {a, b, c} = 3'b001;		//This is going through all the possiblities in the truth table.
 #2 {a, b, c} = 3'b010;
 #2 {a, b, c} = 3'b011;
 #2 {a, b, c} = 3'b100;
@@ -26,10 +27,10 @@ begin
 
 //Task1b below
 
-a <= 0;
+a <= 0;  		//Since this does not have to use structural, I used a different one which uses i as an integer to go through all the possiblilties.
 b <= 0;
 
-$monitor("A=%0b B=%0b C=%0b y_other=%0b", a, b, c, y_other);
+$monitor("A=%0b B=%0b C=%0b y_other=%0b", a, b, c, y_other);	//This will display the simulation results if I had a monitor.
 
 	for (i = 0; i < 8; i = i + 1) begin
 		{a, b, c} = i;
@@ -37,7 +38,7 @@ $monitor("A=%0b B=%0b C=%0b y_other=%0b", a, b, c, y_other);
 	end
 end
 
-initial $monitor("y_structural=%b, a=%b, b=%b, c=^b", y_structual, a, b, c);
+initial $monitor("y_structural=%b, a=%b, b=%b, c=^b", y_structual, a, b, c);   ////This will display the simulation results if I had a monitor.
 
 endmodule
 

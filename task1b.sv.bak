@@ -14,9 +14,8 @@ A	B	C	Y
 
 module task1b(output logic [1:0] Y, input logic A, B, C);
 
-always @ (A or B or C) begin
-	{[1:0]Y} = A + B + C;
-end
+	assign Y[1] = (A ^ B) ^ C;
+	assign Y[0] = (A & B) | ((A ^ B) & C);
 
 endmodule
 
