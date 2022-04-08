@@ -24,20 +24,20 @@ begin
 #2 {a, b, c} = 3'b110;
 #2 {a, b, c} = 3'b111;
 
+initial $monitor("y=%b, a=%b, b=%b, c=^b", y_structual, a, b, c);
+
 //Task1b below
 
 a <= 0;
 b <= 0;
 
-$monitor("A=%0b B=%0b C=%0b y_other=%0b", a, b, c, y_other);
+$monitor("A=%0b B=%0b C=%0b Y=%0b", a, b, c, y_other);
 
 	for (i = 0; i < 8; i = i + 1) begin
 		{a, b, c} = i;
 		#10;
 	end
 end
-
-initial $monitor("y_structural=%b, a=%b, b=%b, c=^b", y_structual, a, b, c);
 
 endmodule
 

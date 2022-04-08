@@ -16,13 +16,15 @@ A	B	C	Y
 module task1a(output logic [1:0] Y, input logic A, B, C);
 
 //Internal wires
-logic A;
-logic B;
-logic C;
-wire term0;
-wire term3;
+
+wire t1, t2, k;
 
 //Place and connect gates
 
+xor g1(Y, A, B, C);
+xor g2(k, A, B);
+and (t1, A, B);
+and (t2, k, C);
+or (Y, t1, t2);
 
 endmodule
